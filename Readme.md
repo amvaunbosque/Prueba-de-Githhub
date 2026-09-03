@@ -1,7 +1,1 @@
-echo "# Prueba-de-Githhub" >> README.md
-git init
-git add README.md
-git commit -m "first commit"
-git branch -M main
-git remote add origin https://github.com/amvaunbosque/Prueba-de-Githhub.git
-git push -u origin main
+Hola, mi nombre es Russell y soy un Explorador Intrépido de la tribu 54, canícula 12. ¿Necesita que lo ayude a cruzar la calle?

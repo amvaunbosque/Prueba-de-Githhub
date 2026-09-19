@@ -1,1 +1,64 @@
-<h1>mi primer proyecto de angular</h1>
+<h1>{{title}}</h1>
+><h2>{{subtitile}}</h2>
+<p> La opcion seleccionada es {{option}}.</p>
+<app-button
+  [textButton]="'Iniciar PPTLS'"
+  [labelMessage]= "'Juego piedra, papel y tijera'"
+  (buttonClick) ="changeMenuOption(1)"
+  >
+  </app-button>
+  
+<app-button
+  [textButton]="'Calculadora'"
+  [labelMessage]= "'Calculadora de notas ds3-2026'"
+  
+  (buttonClick) ="changeMenuOption(2)"
+
+  >
+  </app-button>
+
+  <app-button
+  [textButton]="'Fibonacci'"
+  [labelMessage]= "'Leonardo'"
+  
+  (buttonClick) ="changeMenuOption(3)"
+
+  >
+  </app-button>
+  
+<app-button
+  [textButton]="'Maraton'"
+  [labelMessage]= "'Juego piedra, papel y tijera'"
+  
+  (buttonClick) ="changeMenuOption(4)"
+
+  >
+  </app-button>
+
+  <app-button
+  [textButton]="'Nestor'"
+  [labelMessage]= "'Juego piedra, papel y tijera'"
+  
+  (buttonClick) ="changeMenuOption(5)"
+
+  >
+  </app-button>
+  
+  <app-button
+  [textButton]="'Notas'"
+  [labelMessage]= "'Calculadora de carlos'"
+  
+  (buttonClick) ="changeMenuOption(6)"
+
+  >
+  </app-button>
+  
+<app-button
+  [textButton]="'Corre'"
+  [labelMessage]= "'Calculo de corredores'"
+  
+  (buttonClick) ="changeMenuOption(7)"
+
+  >
+  </app-button>
+  

@@ -1,1 +1,69 @@
-<p>corre works!</p>
+<h1>Corre</h1>
+
+<app-custom-input
+    [inputType]="'number'"
+    [inputLabel]="'Cantidad de casos de prueba'"
+    [(value)]="numeroCasosPrueba"
+></app-custom-input>
+
+<app-button
+    [textButton]="'Evaluar'"
+    [labelMessage]="'Generar casos de prueba'"
+    (buttonClick)="handleAction()">
+</app-button>
+
+@if (errorMessage != "") {
+    <p><strong>{{errorMessage}}</strong></p>
+} @else {
+    @for (caso of casos; track $index) {
+        <div class="caso">
+            <p><strong>Caso {{ $index + 1 }}</strong></p>
+            <app-custom-input
+                [inputType]="'number'"
+                [inputLabel]="'Ax'"
+                [(value)]="caso[0]"
+            ></app-custom-input>
+            <app-custom-input
+                [inputType]="'number'"
+                [inputLabel]="'Ay'"
+                [(value)]="caso[1]"
+            ></app-custom-input>
+            <app-custom-input
+                [inputType]="'number'"
+                [inputLabel]="'Bx'"
+                [(value)]="caso[2]"
+            ></app-custom-input>
+            <app-custom-input
+                [inputType]="'number'"
+                [inputLabel]="'By'"
+                [(value)]="caso[3]"
+            ></app-custom-input>
+            <app-custom-input
+                [inputType]="'number'"
+                [inputLabel]="'Velocidad C (m/s)'"
+                [(value)]="caso[4]"
+            ></app-custom-input>
+            <app-custom-input
+                [inputType]="'number'"
+                [inputLabel]="'Tiempo D (segundos)'"
+                [(value)]="caso[5]"
+            ></app-custom-input>
+        </div>
+    } @empty {
+        <p>Debe seleccionar el número de casos de prueba</p>
+    }
+
+    @if (casos.length > 0) {
+        <app-button
+            [textButton]="'Calcular'"
+            [labelMessage]="'Calcular si alcanza'"
+            (buttonClick)="calcular()">
+        </app-button>
+    }
+
+    @if (resultados.length > 0) {
+        @for (resultado of resultados; track $index) {
+            <p>Caso {{ $index + 1 }}: {{ resultado }}</p>
+        }
+    }
+}

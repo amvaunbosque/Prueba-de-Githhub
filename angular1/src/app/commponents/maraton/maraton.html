@@ -1,1 +1,48 @@
-<p>maraton works!</p>
+<h1>Equipo de Maratón</h1>
+
+<app-custom-input
+    [inputType]="'number'"
+    [inputLabel]="'Cantidad de casos de prueba'"
+    [(value)]="numeroCasosPrueba"
+></app-custom-input>
+
+<app-button
+    [textButton]="'Evaluar'"
+    [labelMessage]="'Generar casos de prueba'"
+    (buttonClick)="handleAction()">
+</app-button>
+
+@if (errorMessage != "") {
+    <p><strong>{{errorMessage}}</strong></p>
+} @else {
+    @for (caso of casos; track $index) {
+        <div class="caso">
+            <app-custom-input
+                [inputType]="'number'"
+                [inputLabel]="'N (estudiantes), Caso ' + ($index + 1)"
+                [(value)]="caso[0]"
+            ></app-custom-input>
+            <app-custom-input
+                [inputType]="'number'"
+                [inputLabel]="'M (cupos), Caso ' + ($index + 1)"
+                [(value)]="caso[1]"
+            ></app-custom-input>
+        </div>
+    } @empty {
+        <p>Debe seleccionar el número de casos de prueba</p>
+    }
+
+    @if (casos.length > 0) {
+        <app-button
+            [textButton]="'Calcular'"
+            [labelMessage]="'Calcular combinaciones'"
+            (buttonClick)="calcular()">
+        </app-button>
+    }
+
+    @if (resultados.length > 0) {
+        @for (resultado of resultados; track $index) {
+            <p>Caso {{ $index + 1 }}: {{ resultado }} formas diferentes</p>
+        }
+    }
+}

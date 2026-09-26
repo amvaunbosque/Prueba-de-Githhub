@@ -1,64 +1,44 @@
 <h1>{{title}}</h1>
 ><h2>{{subtitile}}</h2>
 <p> La opcion seleccionada es {{option}}.</p>
-<app-button
-  [textButton]="'Iniciar PPTLS'"
-  [labelMessage]= "'Juego piedra, papel y tijera'"
-  (buttonClick) ="changeMenuOption(1)"
+
+><div class  =  "menu">
+  @for ( item of menuOptions; track  $index){
+    <app-button
+  [textButton]="item.textButton"
+  [labelMessage]="item.labelMessage"
+  (buttonClick)="changeMenuOption (item.actionNumber)"
   >
-  </app-button>
-  
-<app-button
-  [textButton]="'Calculadora'"
-  [labelMessage]= "'Calculadora de notas ds3-2026'"
-  
-  (buttonClick) ="changeMenuOption(2)"
+    </app-button>
+  }
+</div>
 
-  >
-  </app-button>
+<div class = "content" >
+  @switch (option) {
+    @case (1) {
+      <app-game></app-game>
+    }
+    @case (2) {
+      <app-calculadora></app-calculadora>
+    }
+    @case (3) {
+      <app-leonardo></app-leonardo>
+    }
+    @case (4) {
+      <app-corre></app-corre>
+    }
+    @case (5) {
+      <app-nestor></app-nestor>
+    }
+    @case (6) {
+      <app-maraton></app-maraton>
+    }
+    @case (7) {
+      <app-notas></app-notas>
+    }
 
-  <app-button
-  [textButton]="'Fibonacci'"
-  [labelMessage]= "'Leonardo'"
-  
-  (buttonClick) ="changeMenuOption(3)"
-
-  >
-  </app-button>
-  
-<app-button
-  [textButton]="'Maraton'"
-  [labelMessage]= "'Juego piedra, papel y tijera'"
-  
-  (buttonClick) ="changeMenuOption(4)"
-
-  >
-  </app-button>
-
-  <app-button
-  [textButton]="'Nestor'"
-  [labelMessage]= "'Juego piedra, papel y tijera'"
-  
-  (buttonClick) ="changeMenuOption(5)"
-
-  >
-  </app-button>
-  
-  <app-button
-  [textButton]="'Notas'"
-  [labelMessage]= "'Calculadora de carlos'"
-  
-  (buttonClick) ="changeMenuOption(6)"
-
-  >
-  </app-button>
-  
-<app-button
-  [textButton]="'Corre'"
-  [labelMessage]= "'Calculo de corredores'"
-  
-  (buttonClick) ="changeMenuOption(7)"
-
-  >
-  </app-button>
-  
+    @default {
+      <h3> no se ha seleccionado ninguna opcion </h3>
+    }
+  }
+</div>

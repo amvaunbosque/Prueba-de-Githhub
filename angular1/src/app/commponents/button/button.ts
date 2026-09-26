@@ -7,8 +7,8 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   templateUrl: './button.html',
 })
 export class Button {
-@Input() textButton!: string;
-@Input() labelMessage: string = "PAra cargar informacion";
+@Input() textButton!: String;
+@Input() labelMessage: String = "PAra cargar informacion";
 @Output() buttonClick = new EventEmitter<boolean>();
 
   onclickButton(){

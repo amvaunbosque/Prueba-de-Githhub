@@ -1,1 +1,46 @@
-<p>notas works!</p>
+<h1>Notas</h1>
+
+<app-custom-input
+    [inputType]="'number'"
+    [inputLabel]="'Número de estudiantes (N)'"
+    [(value)]="numeroEstudiantes"
+></app-custom-input>
+
+<app-button
+    [textButton]="'Evaluar'"
+    [labelMessage]="'Generar estudiantes'"
+    (buttonClick)="handleAction()">
+</app-button>
+
+@if (errorMessage != "") {
+    <p><strong>{{errorMessage}}</strong></p>
+} @else {
+    @for (estudiante of estudiantes; track $index) {
+        <div class="estudiante">
+            <p><strong>Estudiante {{ $index + 1 }}</strong></p>
+            @for (nota of estudiante; track $j; let $j = $index) {
+                <app-custom-input
+                    [inputType]="'number'"
+                    [inputLabel]="'Nota ' + ($j + 1)"
+                    [(value)]="estudiantes[$index][$j]"
+                ></app-custom-input>
+            }
+        </div>
+    } @empty {
+        <p>Debe seleccionar el número de estudiantes</p>
+    }
+
+    @if (estudiantes.length > 0) {
+        <app-button
+            [textButton]="'Calcular'"
+            [labelMessage]="'Calcular promedios'"
+            (buttonClick)="calcular()">
+        </app-button>
+    }
+
+    @if (resultados.length > 0) {
+        @for (resultado of resultados; track $index) {
+            <p>{{ resultado }}</p>
+        }
+    }
+}

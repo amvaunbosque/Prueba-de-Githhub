@@ -1,9 +1,25 @@
 import { Component } from '@angular/core';
+import { CustomInput } from '../custom-input/custom-input';
+import { Button } from '../button/button';
 
 @Component({
-  imports: [],
-  selector: 'app-notas',
+  standalone: true,
+  imports: [CustomInput, Button,],
+  selector: 'app-calculadora',
   styleUrl: './notas.css',
   templateUrl: './notas.html',
 })
-export class Notas {}
+export class Notas {
+notas: number[] = [0, 0, 0, 0, 0, 0, 0, 0];
+  pesos: number[] = [0.10, 0.10, 0.10, 0.10, 0.10, 0.15, 0.15, 0.20];
+
+  notaDefinitiva: number | null = null;
+
+  calcularNotaDefinitiva() {
+    let total = 0;
+    for (let i = 0; i < this.notas.length; i++) {
+      total += this.notas[i] * this.pesos[i];
+    }
+    this.notaDefinitiva = total;
+  }
+}

@@ -8,7 +8,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class Button {
 @Input() textButton!: String;
-@Input() labelMessage: String = "PAra cargar informacion";
+@Input() labelMessage: String = "Para cargar informacion";
 @Output() buttonClick = new EventEmitter<boolean>();
 
   onclickButton(){

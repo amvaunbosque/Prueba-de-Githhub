@@ -1,1 +1,41 @@
-<p>nestor works!</p>
+<h1>Bienvenido a la elección del técnico de Colombia </h1>
+
+<app-custom-input
+    [inputType]="'number'"
+    [inputLabel]="'number'"
+    [(value)]="casosDePrueba"
+></app-custom-input>
+
+<app-button
+    [labelMessage]="''"
+    [textButton]="'Calcular'"
+    (buttonClick)="handleAction()"
+></app-button>
+
+@if (errorMesas !== "") {
+    <p><strong>{{errorMesas}}</strong></p>
+}@else {
+    @for (item of numeroDeVotaciones; track $index) {
+        <div class="votacion">
+        <app-custom-input>
+            [inputType]="'Votos a favor + {{$index+1}}'"
+            [inputLabel]="''"
+            [(value)]="item[0]"
+        </app-custom-input>
+
+                <app-custom-input>
+            [inputType]="'Votos en contra + {{$index+1}}'"
+            [inputLabel]="''"
+            [(value)]="item[1]"
+        </app-custom-input>
+</div>
+
+
+    @if(isEnableCalcular(item[0], item[1])){
+        <p>{{calcularGanador(item[0], item[1])}}</p>
+    }
+    }@empty {
+        <p>Debe escoger un número entre los casos de prueba</p>
+    }
+}
+

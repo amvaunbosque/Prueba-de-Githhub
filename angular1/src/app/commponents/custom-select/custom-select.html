@@ -1,0 +1,8 @@
+<label>{{selectLabel}}</label>
+
+<select [ngModel]="value" (ngModelChange)="onHandleChange($event)">
+    <option value=0 selected>Selecione una opcion</option>
+    @for (item of selectItems; track $index) {
+        <option [value]= "item.selectId">{{item.selectValue}}
+        </option>
+    }</select>

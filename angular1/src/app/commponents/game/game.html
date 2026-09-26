@@ -1,1 +1,42 @@
-<p>game works!</p>
+<h1>Bienvenido a piedra, papel, tijera, Lagarto o Spock</h1>
+
+<app-custom-input
+    [inputType]="'number'"
+    [inputLabel]="'number'"
+    [(value)]="numeroCasosPrueba"
+></app-custom-input>
+
+<app-button
+[textButton]="'Calcular'"
+[labelMessage]="'Calcular Nestor'"
+(buttonClick)="handleAction()">
+</app-button>
+
+@if (errorMessage != "") {
+    <p><strong>{{errorMessage}}</strong></p>
+} @else {
+    @for (item of numeroDeJuegos; track $index) {
+        <div class="votacion">
+            <app-custom-select
+                [selectLabel]="'Elección de Sheldon, Juego ' + ($index + 1)"
+                [selectItems]="selectOptions"
+                [(value)]="item[0]"
+            ></app-custom-select>
+            <app-custom-select
+                [selectLabel]="'Elección de Rajesh, Juego ' + ($index + 1)"
+                [selectItems]="selectOptions"
+                [(value)]="item[1]"
+            ></app-custom-select>
+
+            @if (calcularGanador(item[0], item[1]) == "sheldon") {
+                <p>{{ $index + 1 }}: Gana Sheldon</p>
+            } @else if (calcularGanador(item[0], item[1]) == "rajesh") {
+                <p>{{ $index + 1 }}: Gana Rajesh</p>
+            } @else {
+                <p>{{ $index + 1 }}: Empate</p>
+            }
+        </div>
+    } @empty {
+        <p>Debe seleccionar el número de casos de prueba</p>
+    }
+}

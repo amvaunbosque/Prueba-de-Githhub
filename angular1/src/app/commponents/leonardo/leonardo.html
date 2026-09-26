@@ -1,13 +1,26 @@
 <h1>Bienvenido a la serie de Fibonacci </h1>
 
-<label>INGRESE EL NUM DE fIBONACCI A CALCULAR </label>
-<input [(ngModel)= "casosDePueba"]>
+<app-custom-input
+    [inputType]="'number'"
+    [inputLabel]="'number'"
+    [(value)]="casosDePrueba"
+></app-custom-input>
 
 <app-button
-    [labelMessage]="''"
+    [labelMessage]="'Calcular'"
     [textButton]="'Calcular'"
     (buttonClick)="handleAction()"
 ></app-button>
+
+@if (errorMesas !== "") {
+    <p><strong>{{errorMesas}}</strong></p>
+}@else {
+    @for (item of serieFibonacci; track $index) {
+        <p>{{item}}</p>
+    }@empty {
+        <p>Debe seleccionar el número de casos de prueba</p>
+    }
+}
 
 @for (item of serieFibonacci; track $index) {
     <p>{{item}}</p>

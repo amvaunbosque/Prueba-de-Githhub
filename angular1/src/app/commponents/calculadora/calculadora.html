@@ -1,1 +1,24 @@
-<p>calculadora works!</p>
+<h1>Calculadora de Notas</h1>
+
+@for (nota of notas; track $index) {
+    <app-custom-input
+        [inputType]="'number'"
+        [inputLabel]="'Nota ' + ($index + 1) + ' (peso ' + (pesos[$index] * 100) + '%)'"
+        [(value)]="notas[$index]"
+    ></app-custom-input>
+}
+
+<app-button
+    [textButton]="'Calcular'"
+    [labelMessage]="'Calcular nota definitiva'"
+    (buttonClick)="calcularNotaDefinitiva()">
+</app-button>
+
+@if (notaDefinitiva !== null) {
+    <p><strong>Nota definitiva: {{ notaDefinitiva.toFixed(2) }}</strong></p>
+    @if (notaDefinitiva >= 3) {
+        <p><strong>Aprobado</strong></p>
+    } @else {
+        <p><strong>No Aprobado</strong></p>
+    }
+}

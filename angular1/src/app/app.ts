@@ -1,13 +1,13 @@
 import { Nestor } from './commponents/nestor/nestor';
 import { Component, signal } from '@angular/core';
 import { Button } from './commponents/button/button';
-import { menuButton } from './core/model/model';
 import { Calculadora } from './commponents/calculadora/calculadora';
 import { Leonardo } from './commponents/leonardo/leonardo';
 import { Game } from './commponents/game/game';
 import { Corre } from './commponents/corre/corre';
 import { Maraton } from './commponents/maraton/maraton';
 import { Notas } from './commponents/notas/notas';
+import { MenuButton } from './core/model/model';
 @Component({
   imports: [Button, Calculadora, Leonardo, Game, Corre, Nestor, Maraton, Notas],
   selector: 'app-root',
@@ -18,7 +18,7 @@ export class App {
   title: String;
   subtitile: String;
   option: Number;
-  menuOptions : menuButton[];
+  menuOptions : MenuButton[];
 
   constructor(){
     this.option = 0;
